@@ -7,21 +7,44 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <div className={styles.card}>
-                <div className={styles.logo}>💬</div>
-                <h1 className={styles.title}>AnonChat</h1>
-                <p className={styles.subtitle}>
-                    Connect instantly with a random stranger. No account. No history. Just chat.
+                <div className={styles.brand}>
+                    <span className={styles.brandIcon}>S</span>
+                    <span className={styles.brandName}>StrangerTalk</span>
+                </div>
+
+                <h1 className={styles.headline}>Talk to someone new.</h1>
+                <p className={styles.sub}>
+                    Anonymous one-on-one conversations with real people. No sign-up, no trace.
                 </p>
+
+                <div className={styles.divider} />
+
                 <ul className={styles.features}>
-                    <li>🎲 Randomly matched</li>
-                    <li>🔒 Fully anonymous</li>
-                    <li>⚡ Real-time messaging</li>
-                    <li>🔄 Skip anytime</li>
+                    <li>
+                        <span className={styles.dot} />
+                        Randomly paired with a stranger
+                    </li>
+                    <li>
+                        <span className={styles.dot} />
+                        No account or personal info needed
+                    </li>
+                    <li>
+                        <span className={styles.dot} />
+                        Skip and find someone new anytime
+                    </li>
+                    <li>
+                        <span className={styles.dot} />
+                        Messages are never stored
+                    </li>
                 </ul>
-                <button className={styles.startBtn} onClick={startSearch} aria-label="Start chatting">
-                    Start Chatting
+
+                <button className={styles.startBtn} onClick={startSearch}>
+                    Start a Conversation
                 </button>
-                <p className={styles.disclaimer}>By using this service you agree to be respectful.</p>
+
+                <p className={styles.note}>
+                    By continuing you agree to keep conversations respectful.
+                </p>
             </div>
         </div>
     );

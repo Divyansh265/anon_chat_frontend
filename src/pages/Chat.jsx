@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useChat } from '../context/ChatContext';
 import { useAutoScroll } from '../hooks/useAutoScroll';
 import MessageBubble from '../components/MessageBubble';
@@ -17,33 +16,35 @@ export default function Chat() {
 
     return (
         <div className={styles.layout}>
-            {/* Header */}
             <header className={styles.header}>
                 <div className={styles.headerLeft}>
-                    <span className={styles.appName}>AnonChat</span>
+                    <div className={styles.brand}>
+                        <span className={styles.brandIcon}>S</span>
+                        <span className={styles.brandName}>StrangerTalk</span>
+                    </div>
                     {partnerName && isConnected && (
-                        <span className={styles.partnerName}>with {partnerName}</span>
+                        <span className={styles.partnerName}>— {partnerName}</span>
                     )}
                 </div>
                 <div className={styles.headerRight}>
                     <StatusBadge status={status} />
                     {isConnected && (
-                        <button className={styles.skipBtn} onClick={skipChat} aria-label="Skip to next person">
-                            Skip
+                        <button className={styles.skipBtn} onClick={skipChat}>
+                            Next
                         </button>
                     )}
-                    <button className={styles.endBtn} onClick={endChat} aria-label="End chat and go home">
-                        End
+                    <button className={styles.endBtn} onClick={endChat}>
+                        Leave
                     </button>
                 </div>
             </header>
 
-            {/* Message area */}
-            <main className={styles.messages} aria-live="polite" aria-label="Chat messages">
+            <main className={styles.messages} aria-live="polite">
                 {isSearching && (
                     <div className={styles.centerMsg}>
-                        <div className={styles.spinner} aria-hidden="true" />
-                        <p>Looking for someone to chat with...</p>
+                        <div className={styles.spinner} />
+                        <p>Finding someone to talk to...</p>
+                        <span className={styles.hint}>This usually takes a few seconds</span>
                     </div>
                 )}
 
@@ -51,11 +52,11 @@ export default function Chat() {
                     <div className={styles.centerMsg}>
                         <p className={styles.disconnectMsg}>
                             {status === 'partner_disconnected'
-                                ? 'Your partner disconnected.'
-                                : 'Chat ended.'}
+                                ? 'The other person left the chat.'
+                                : 'Conversation ended.'}
                         </p>
                         <button className={styles.newChatBtn} onClick={skipChat}>
-                            Find New Partner
+                            Find Someone New
                         </button>
                     </div>
                 )}
@@ -65,11 +66,9 @@ export default function Chat() {
                 ))}
 
                 {error && <p className={styles.errorMsg}>{error}</p>}
-
                 <div ref={bottomRef} />
             </main>
 
-            {/* Input */}
             <MessageInput onSend={sendMessage} disabled={!isConnected} />
         </div>
     );
