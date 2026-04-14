@@ -39,7 +39,9 @@ export function ChatProvider({ children }) {
         if (listenersAttached.current) return;
         listenersAttached.current = true;
 
-        socket.on('searching', () => dispatch({ type: 'SEARCHING' }));
+        socket.on('searching', () => {
+            dispatch({ type: 'SEARCHING' });
+        });
         socket.on('matched', (data) => dispatch({ type: 'MATCHED', payload: data }));
         socket.on('receive_message', (msg) => dispatch({ type: 'MESSAGE', payload: msg }));
         socket.on('partner_disconnected', () => dispatch({ type: 'PARTNER_DISCONNECTED' }));
