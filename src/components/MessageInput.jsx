@@ -6,17 +6,19 @@ export default function MessageInput({ onSend, disabled }) {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
-            <textarea
-                className={styles.input}
-                value={value}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                placeholder="Type a message... (Enter to send)"
-                disabled={disabled}
-                rows={1}
-                aria-label="Message input"
-            />
-            <span className={styles.counter}>{value.length}/{maxLength}</span>
+            <div className={styles.inputWrapper}>
+                <textarea
+                    className={styles.input}
+                    value={value}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Type a message... (Enter to send)"
+                    disabled={disabled}
+                    rows={1}
+                    aria-label="Message input"
+                />
+                <span className={styles.counter}>{value.length}/{maxLength}</span>
+            </div>
             <button
                 type="submit"
                 className={styles.sendBtn}
