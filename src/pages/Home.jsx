@@ -14,7 +14,7 @@ export default function Home() {
 
                 <h1 className={styles.headline}>Talk to someone new.</h1>
                 <p className={styles.sub}>
-                    Anonymous one-on-one conversations with real people. No sign-up, no trace.
+                    Anonymous one-on-one conversations with real people.
                 </p>
 
                 <div className={styles.divider} />
